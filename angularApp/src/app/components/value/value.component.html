@@ -1,0 +1,7 @@
+<div>
+  <div *ngIf="values$ | async">
+    <div *ngFor="let value of (values$ | async)">
+      <div>{{value.id}} : {{value.name}}</div>
+    </div>
+  </div>
+</div>
