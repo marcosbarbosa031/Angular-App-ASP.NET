@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ApiService } from 'src/app/services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -6,17 +8,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @Input() valuesFromHome: any;
   @Output() showRegister = new EventEmitter();
   public model: any = {};
 
-  constructor() { }
+  constructor(
+    private apiService: ApiService
+  ) { }
 
   ngOnInit() {
   }
 
   public register() {
-    console.log(this.model);
+    this.apiService.register(this.model).subscribe(resp => {
+      this.showRegister.emit(false);
+    }, error => {
+      console.error(error);
+    });
   }
 
   public cancel() {
