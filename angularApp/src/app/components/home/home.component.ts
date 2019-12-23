@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public values$: Observable<any>;
+  public registerMode = false;
 
-  constructor() { }
+  constructor(
+    private apiService: ApiService
+  ) { }
 
   ngOnInit() {
+    this.getValues();
+  }
+
+  public registerToggle() {
+    this.registerMode = !this.registerMode;
+  }
+
+  private getValues() {
+    this.values$ = this.apiService.getValues();
   }
 
 }
