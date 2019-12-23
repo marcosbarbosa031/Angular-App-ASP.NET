@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     this.apiService.register(this.model).subscribe(resp => {
       this.showRegister.emit(false);
     }, error => {
-      console.error(error);
+      console.log(error);
     });
   }
 

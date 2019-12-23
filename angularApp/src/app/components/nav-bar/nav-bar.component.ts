@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/services';
 })
 export class NavBarComponent implements OnInit {
   public model: any = {};
-  
+
   constructor(
     private apiService: ApiService
   ) { }
@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
     this.apiService.login(this.model).subscribe( () => {
       console.log('Successfully logged in!');
     }, error => {
-      console.error(error.message);
+      console.log(error);
     });
   }
 
