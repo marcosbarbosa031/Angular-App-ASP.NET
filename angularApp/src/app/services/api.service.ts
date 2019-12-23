@@ -17,7 +17,7 @@ export class ApiService {
     return this.http.get<any>(environment.apiURI + '/values');
   }
 
-  public login(body): Observable<any> {
+  public login(body: any): Observable<any> {
     return this.http.post<any>(environment.apiURI + '/auth/login', body)
       .pipe(
         map((response: any) => {
@@ -27,5 +27,9 @@ export class ApiService {
           }
         })
       );
+  }
+
+  public register(body: any): Observable<any> {
+    return this.http.post<any>(environment.apiURI + '/auth/register', body);
   }
 }
