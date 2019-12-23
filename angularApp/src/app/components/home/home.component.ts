@@ -19,12 +19,16 @@ export class HomeComponent implements OnInit {
     this.getValues();
   }
 
-  public registerToggle() {
-    this.registerMode = !this.registerMode;
+  public showRegister() {
+    this.registerMode = true;
   }
 
+  public cancelRegisterMode(registerMode: boolean) {
+    this.registerMode = registerMode;
+  }
   private getValues() {
     this.values$ = this.apiService.getValues();
   }
+
 
 }
