@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  public model: any = {};
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public register() {
+    console.log(this.model);
+  }
+
+  public cancel() {
+    console.log('cancel!');
   }
 
 }
