@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ValueComponent } from './components/value/value.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ValueComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
