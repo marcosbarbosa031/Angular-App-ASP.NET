@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ValueComponent } from './components/value/value.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -12,7 +11,6 @@ import { RegisterComponent } from './components/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ValueComponent,
     NavBarComponent,
     HomeComponent,
     RegisterComponent
