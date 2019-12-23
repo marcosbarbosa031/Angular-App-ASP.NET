@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public values$: Observable<any>;
   public registerMode = false;
 
   constructor(
@@ -16,7 +15,6 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getValues();
   }
 
   public showRegister() {
@@ -26,9 +24,5 @@ export class HomeComponent implements OnInit {
   public cancelRegisterMode(registerMode: boolean) {
     this.registerMode = registerMode;
   }
-  private getValues() {
-    this.values$ = this.apiService.getValues();
-  }
-
 
 }
