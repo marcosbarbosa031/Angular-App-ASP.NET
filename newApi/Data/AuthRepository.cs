@@ -27,7 +27,7 @@ namespace newApi.Data
     public async Task<User> Register(User user, string password)
     {
       byte[] passwordHash, passwordSalt;
-      createPAsswordHash(password, out passwordHash, out passwordSalt);
+      createPasswordHash(password, out passwordHash, out passwordSalt);
 
       user.PasswordHash = passwordHash;
       user.PasswordSalt = passwordSalt;
@@ -45,7 +45,7 @@ namespace newApi.Data
       return false;
     }
 
-    private void createPAsswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+    private void createPasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {
       using(var hmac = new System.Security.Cryptography.HMACSHA512())
       {

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,9 +9,7 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   public registerMode = false;
 
-  constructor(
-    private apiService: ApiService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
   }
