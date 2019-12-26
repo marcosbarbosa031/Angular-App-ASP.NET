@@ -18,7 +18,7 @@
 
   <div *ngIf="loggedIn()" class="dropdown">
     <a class="btn dropdown-toggle text-light">
-      Wellcome {{getUsername()}}!
+      Wellcome {{getUsername() | titlecase}}!
     </a>
   
     <div class="dropdown-menu">
