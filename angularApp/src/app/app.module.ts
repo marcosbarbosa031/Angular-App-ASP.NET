@@ -13,6 +13,8 @@ import { ErrorInterceptorProvider } from './helpers/error.interceptor';
 import { MemberListComponent } from './components/member-list/member-list.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MessagesComponent } from './components/messages/messages.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     ErrorInterceptorProvider
