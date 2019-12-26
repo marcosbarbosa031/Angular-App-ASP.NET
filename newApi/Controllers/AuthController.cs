@@ -29,7 +29,7 @@ namespace newApi.Controllers
     {
       userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
-      if (await _repo.UserExists(userForRegisterDto.Username)) return BadRequest("Username already taken");
+      if (await _repo.UserExists(userForRegisterDto.Username)) return BadRequest("Username unavailable");
 
       var userToCreate = new User
       {
