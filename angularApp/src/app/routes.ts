@@ -3,9 +3,10 @@ import { HomeComponent } from './components/home/home.component';
 import { MemberListComponent } from './components/member-list/member-list.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { AuthGuard } from './guards';
 
 export const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'members', component: MemberListComponent },
   { path: 'lists', component: ListsComponent },
   { path: 'messages', component: MessagesComponent },
