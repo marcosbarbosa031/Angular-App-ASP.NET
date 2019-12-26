@@ -32,7 +32,11 @@ export class NavBarComponent implements OnInit {
   }
 
   public loggedIn() {
-    return !!localStorage.getItem('token');
+    return this.authService.loggedIn();
+  }
+
+  public getUsername() {
+    return this.authService.getUsername();
   }
 
 }
