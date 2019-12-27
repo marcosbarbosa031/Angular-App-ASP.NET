@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 
 namespace newApi.Models
 {
-  [JsonObject(IsReference = true)]
   public class User
   {
     public int Id { get; set; }
