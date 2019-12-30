@@ -11,17 +11,18 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
   private jwtHelper = new JwtHelperService();
   private decodedToken: any;
+  private baseUrl = environment.apiURI;
 
   constructor(
     private http: HttpClient
   ) { }
 
   public getValues(): Observable<any> {
-    return this.http.get<any>(environment.apiURI + '/values');
+    return this.http.get<any>(this.baseUrl + '/values');
   }
 
   public login(body: any): Observable<any> {
-    return this.http.post<any>(environment.apiURI + '/auth/login', body)
+    return this.http.post<any>(this.baseUrl + '/auth/login', body)
       .pipe(
         map((response: any) => {
           const user = response;
@@ -39,7 +40,7 @@ export class AuthService {
   }
 
   public register(body: any): Observable<any> {
-    return this.http.post<any>(environment.apiURI + '/auth/register', body);
+    return this.http.post<any>(this.baseUrl + '/auth/register', body);
   }
 
   public decodeToken(token: any) {
