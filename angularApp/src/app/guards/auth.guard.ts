@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AlertifyService } from '../services/alertify.service';
+import { AlertifyService } from '../services';
 import { AuthService } from '../services';
 
 @Injectable({
