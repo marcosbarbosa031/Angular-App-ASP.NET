@@ -18,11 +18,11 @@ export class AuthService {
   ) { }
 
   public getValues(): Observable<any> {
-    return this.http.get<any>(this.baseUrl + '/values');
+    return this.http.get<any>(`${this.baseUrl}/values`);
   }
 
   public login(body: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl + '/auth/login', body)
+    return this.http.post<any>(`${this.baseUrl}/auth/login`, body)
       .pipe(
         map((response: any) => {
           const user = response;
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   public register(body: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl + '/auth/register', body);
+    return this.http.post<any>(`${this.baseUrl}/auth/register`, body);
   }
 
   public decodeToken(token: any) {
