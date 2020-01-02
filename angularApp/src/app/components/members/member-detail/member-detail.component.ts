@@ -18,9 +18,10 @@ export class MemberDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loadUser();
   }
 
   private loadUser() {
-    this.userService.getUser(+this.route.snapshot.params.id);
+    this.user$ = this.userService.getUser(+this.route.snapshot.params.id);
   }
 }
