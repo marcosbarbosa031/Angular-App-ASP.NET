@@ -1,3 +1,40 @@
-<p>
-  {{(user$ | async)?.knownAs}}
-</p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{(user$ | async)?.photoUrl}}" alt="{{(user$ | async)?.knownAs}}">
+        <div class="card-body">
+          <div>
+            <strong>Location</strong>
+            <p>{{(user$ | async)?.city}}, {{(user$ | async)?.country}}</p>
+          </div>
+
+          <div>
+            <strong>Age:</strong>
+            <p>{{(user$ | async)?.age}}</p>
+          </div>
+
+          <div>
+            <strong>Last Active:</strong>
+            <p>{{(user$ | async)?.lastActive}}</p>
+          </div>
+
+          <div>
+            <strong>Member Since:</strong>
+            <p>{{(user$ | async)?.created}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary w-100">Like</button>
+            <button class="btn btn-success w-100">Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      
+    </div>
+  </div>
+</div>
