@@ -8,7 +8,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { ErrorInterceptorProvider } from './helpers';
-import { MemberDetailResolver, MemberListResolver } from './resolver';
+import { MemberDetailResolver, MemberListResolver, MemberEditResolver } from './resolver';
 import { NgxGalleryModule } from 'ngx-gallery';
 
 import { AppComponent } from './app.component';
@@ -64,6 +64,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     ErrorInterceptorProvider,
     MemberDetailResolver,
     MemberListResolver,
+    MemberEditResolver,
     { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
   ],
   bootstrap: [AppComponent]
