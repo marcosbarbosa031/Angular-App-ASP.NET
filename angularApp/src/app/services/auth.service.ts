@@ -51,6 +51,6 @@ export class AuthService {
     return this.decodedToken.unique_name;
   }
   public getUserId() {
-    return this.decodedToken.nameId;
+    return this.decodedToken.nameid;
   }
 }
