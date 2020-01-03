@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +23,13 @@ import { MemberDetailComponent } from './components/members/member-detail/member
 
 export function tokenGetter() {
   return localStorage.getItem('token');
+}
+
+export class CustomHammerConfig extends HammerGestureConfig {
+  overrides = {
+    pinch: { enable: false },
+    rotate: { enable: false }
+  };
 }
 
 @NgModule({
@@ -57,7 +64,8 @@ export function tokenGetter() {
   providers: [
     ErrorInterceptorProvider,
     MemberDetailResolver,
-    MemberListResolver
+    MemberListResolver,
+    { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
   ],
   bootstrap: [AppComponent]
 })
