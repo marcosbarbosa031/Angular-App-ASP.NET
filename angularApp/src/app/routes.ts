@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './guards';
-import { MemberListResolver, MemberDetailResolver } from './resolver';
+import { MemberListResolver, MemberDetailResolver, MemberEditResolver } from './resolver';
 import { HomeComponent } from './components/home/home.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { MessagesComponent } from './components/messages/messages.component';
@@ -15,7 +15,7 @@ export const appRoutes: Routes = [
     children: [
       { path: 'members', component: MemberListComponent, resolve: {users: MemberListResolver} },
       { path: 'members/:id', component: MemberDetailComponent, resolve: {user: MemberDetailResolver} },
-      { path: 'member/edit', component: MemberEditComponent},
+      { path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver}},
       { path: 'messages', component: MessagesComponent },
       { path: 'lists', component: ListsComponent },
     ]
