@@ -10,6 +10,7 @@ import { appRoutes } from './routes';
 import { ErrorInterceptorProvider } from './helpers';
 import { MemberDetailResolver, MemberListResolver, MemberEditResolver } from './resolver';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { PreventUnsavedChanges } from './guards';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -62,6 +63,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
   ],
   providers: [
     ErrorInterceptorProvider,
+    PreventUnsavedChanges,
     MemberDetailResolver,
     MemberListResolver,
     MemberEditResolver,
