@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from './guards';
+import { AuthGuard, PreventUnsavedChanges } from './guards';
 import { MemberListResolver, MemberDetailResolver, MemberEditResolver } from './resolver';
 import { HomeComponent } from './components/home/home.component';
 import { ListsComponent } from './components/lists/lists.component';
@@ -15,7 +15,8 @@ export const appRoutes: Routes = [
     children: [
       { path: 'members', component: MemberListComponent, resolve: {users: MemberListResolver} },
       { path: 'members/:id', component: MemberDetailComponent, resolve: {user: MemberDetailResolver} },
-      { path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver}},
+      { path: 'member/edit', component: MemberEditComponent, resolve: {user: MemberEditResolver},
+        canDeactivate: [PreventUnsavedChanges]},
       { path: 'messages', component: MessagesComponent },
       { path: 'lists', component: ListsComponent },
     ]
