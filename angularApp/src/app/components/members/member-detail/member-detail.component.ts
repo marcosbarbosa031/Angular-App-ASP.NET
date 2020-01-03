@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,7 +11,6 @@ export class MemberDetailComponent implements OnInit {
   public user: User;
 
   constructor(
-    private userService: UserService,
     private route: ActivatedRoute
   ) { }
 
