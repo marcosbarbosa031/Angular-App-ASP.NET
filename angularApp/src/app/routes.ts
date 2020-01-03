@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './guards';
+import { MemberListResolver, MemberDetailResolver } from './resolver';
 import { HomeComponent } from './components/home/home.component';
-import { MemberListComponent } from './components/members/member-list/member-list.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { MessagesComponent } from './components/messages/messages.component';
-import { AuthGuard } from './guards';
-import { MemberDetailComponent } from './components/members/member-detail/member-detail.component';
-import { MemberListResolver, MemberDetailResolver } from './resolver';
+import { MemberListComponent, MemberDetailComponent, MemberEditComponent } from './components/members';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +15,7 @@ export const appRoutes: Routes = [
     children: [
       { path: 'members', component: MemberListComponent, resolve: {users: MemberListResolver} },
       { path: 'members/:id', component: MemberDetailComponent, resolve: {user: MemberDetailResolver} },
+      { path: 'members-edit/:id', component: MemberEditComponent},
       { path: 'messages', component: MessagesComponent },
       { path: 'lists', component: ListsComponent },
     ]

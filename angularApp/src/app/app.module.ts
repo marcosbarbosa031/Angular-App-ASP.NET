@@ -15,12 +15,9 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
-import { MemberListComponent } from './components/members/member-list/member-list.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { MessagesComponent } from './components/messages/messages.component';
-import { MemberCardComponent } from './components/members/member-card/member-card.component';
-import { MemberDetailComponent } from './components/members/member-detail/member-detail.component';
-import { MemberEditComponent } from './components/members/member-edit/member-edit.component';
+import { MemberListComponent, MemberCardComponent, MemberDetailComponent, MemberEditComponent } from './components/members';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
