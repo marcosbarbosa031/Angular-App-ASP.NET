@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
-  public user$: Observable<User>;
+  public user: User;
 
   constructor(
     private userService: UserService,
@@ -22,6 +22,6 @@ export class MemberDetailComponent implements OnInit {
   }
 
   private loadUser() {
-    this.user$ = this.userService.getUser(+this.route.snapshot.params.id);
+    this.user = this.route.snapshot.data.user;
   }
 }
