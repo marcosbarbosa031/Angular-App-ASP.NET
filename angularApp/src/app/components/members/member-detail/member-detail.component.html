@@ -34,7 +34,26 @@
     </div>
 
     <div class="col-sm-8">
-      
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading="About {{(user$ | async)?.knownAs}}">
+            <h4>Description</h4>
+            <p>{{(user$ | async)?.introduction}}</p>
+            <h4>Looking For</h4>
+            <p>{{(user$ | async)?.lookingFor}}</p>
+          </tab>
+          <tab heading="Intrests">
+            <h4>Intrests</h4>
+            <p>{{(user$ | async)?.interests}}</p>
+          </tab>
+          <tab heading="Photos">
+            <p>Photoes goes here.</p>
+          </tab>
+          <tab heading="Messages">
+            <p>Messages goes here.</p>
+          </tab>
+        </tabset>
+      </div>
     </div>
   </div>
 </div>
