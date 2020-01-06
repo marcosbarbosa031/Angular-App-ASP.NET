@@ -1,10 +1,11 @@
 # The Docker image to run your workspace in. Defaults to gitpod/workspace-full
-image: gitpod/workspace-dotnet-vnc
+image:
+  file: .docker/Dockerfile
 
 # Command to start on workspace startup (optional)
 tasks:
   - init: cd angularApp && npm install --silent
-    command: npm start | cd angularApp && npm start
+    command: npm start
 
   - command: cd newApi && dotnet run
 
@@ -12,3 +13,8 @@ tasks:
 ports:
   - port: 4200
     onOpen: open-preview
+  - port: 5000
+
+vscode:
+  extensions:
+    - ms-vscode.csharp@1.21.7:63Epcq/w+Vl8tIwYMHyrXg==
