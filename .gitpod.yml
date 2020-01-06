@@ -4,9 +4,10 @@ image:
 
 # Command to start on workspace startup (optional)
 tasks:
-  - init: cd angularApp && npm i -n
-          cd newApi && dotnet run
+  - init: cd angularApp && npm install
     command: cd angularApp && npm start
+
+  - command: cd newApi && dotnet run
 
 # Ports to expose on workspace startup (optional)
 ports:
@@ -14,6 +15,6 @@ ports:
     onOpen: open-preview
   - port: 5000
 
-# vscode:
-#   extensions:
-#     - ms-vscode.csharp@1.21.7:63Epcq/w+Vl8tIwYMHyrXg==
+vscode:
+  extensions:
+    - ms-vscode.csharp@1.21.7:63Epcq/w+Vl8tIwYMHyrXg==
