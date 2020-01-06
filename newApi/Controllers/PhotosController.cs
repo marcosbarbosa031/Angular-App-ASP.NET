@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -30,9 +31,9 @@ namespace newApi.Controllers
       _repo = repo;
 
       Account acc = new Account(
-        _cloudinaryConfig.Value.CloudName,
-        _cloudinaryConfig.Value.ApiKey,
-        _cloudinaryConfig.Value.ApiSecret
+        Environment.GetEnvironmentVariable("CloudName"),
+        Environment.GetEnvironmentVariable("ApiKey"),
+        Environment.GetEnvironmentVariable("ApiSecret")
       );
 
       _cloudinary = new Cloudinary(acc);

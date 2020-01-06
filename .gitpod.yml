@@ -5,7 +5,7 @@ image:
 # Command to start on workspace startup (optional)
 tasks:
   - init: cd angularApp && npm install --silent
-    command: npm start
+    command: cd angularApp && npm start | npm start
 
   - command: cd newApi && dotnet run
 
@@ -18,3 +18,10 @@ ports:
 vscode:
   extensions:
     - ms-vscode.csharp@1.21.7:63Epcq/w+Vl8tIwYMHyrXg==
+
+github:
+  prebuilds:
+    # enable for the master/default branch (defaults to true)
+    master: false
+    # enable for all branches in this repo (defaults to false)
+    branches: true

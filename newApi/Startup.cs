@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Text;
 using AutoMapper;
@@ -28,13 +29,14 @@ namespace newApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Console.WriteLine("AQUII: {0}", Environment.GetEnvironmentVariable("AppToken"));
             services.AddDbContext<DataContext>(db => db.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers().AddNewtonsoftJson(opt => 
             {
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
             services.AddCors();
-            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudnarySettings"));
+            // services.Configure<CloudinarySettings>(Configuration.GetSection("CloudnarySettings"));
             services.AddAutoMapper(typeof(DatingRepository).Assembly);
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
@@ -44,7 +46,7 @@ namespace newApi
                     {
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
-                            .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                            .GetBytes(Environment.GetEnvironmentVariable("AppToken"))),
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };
