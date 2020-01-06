@@ -22,7 +22,7 @@ namespace newApi.Helpers
       CreateMap<Photo, PhotosForDetailDto>();
       CreateMap<UserForUpdateDto, User>();
       CreateMap<Photo, PhotoForReturnDto>();
-      CreateMap<PhotoForReturnDto, Photo>();
+      CreateMap<PhotoForCreationDto, Photo>();
     }
   }
 }
