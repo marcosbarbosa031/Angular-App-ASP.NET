@@ -55,7 +55,7 @@ namespace newApi.Controllers
       };
 
       // Generating security Key
-      var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
+      var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("AppToken")));
 
       // Creating Signed Credentials using security key
       var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);

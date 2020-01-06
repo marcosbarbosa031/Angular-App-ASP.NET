@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('token: ', this.authService.getToken());
+    console.log('URI: ', environment.apiURI);
   }
 
   public showRegister() {
