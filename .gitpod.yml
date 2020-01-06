@@ -4,8 +4,8 @@ image:
 
 # Command to start on workspace startup (optional)
 tasks:
-  - init: cd angularApp && npm install
-    command: cd angularApp && npm start
+  - init: cd angularApp && npm install --silent
+    command: npm start
 
   - command: cd newApi && dotnet run
 
