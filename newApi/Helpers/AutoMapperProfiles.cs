@@ -21,6 +21,8 @@ namespace newApi.Helpers
           opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
       CreateMap<Photo, PhotosForDetailDto>();
       CreateMap<UserForUpdateDto, User>();
+      CreateMap<Photo, PhotoForReturnDto>();
+      CreateMap<PhotoForReturnDto, Photo>();
     }
   }
 }
