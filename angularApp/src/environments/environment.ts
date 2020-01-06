@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURI: 'http://localhost:5000/api'
+  apiURI: 'https://5000-f7593444-8386-473b-ba63-f31f8a56b9af.ws-us02.gitpod.io/api'
 };
 
 /*

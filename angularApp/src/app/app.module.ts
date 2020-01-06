@@ -56,8 +56,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        whitelistedDomains: ['localhost:5000'],
-        blacklistedRoutes: ['localhost:5000/api/auth']
+        whitelistedDomains: ['localhost:5000', '5000-f7593444-8386-473b-ba63-f31f8a56b9af.ws-us02.gitpod.io'],
+        blacklistedRoutes: ['localhost:5000/api/auth', '5000-f7593444-8386-473b-ba63-f31f8a56b9af.ws-us02.gitpod.io/api/auth']
       }
     })
   ],

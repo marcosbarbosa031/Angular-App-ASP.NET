@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,12 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   public registerMode = false;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+    console.log('token: ', this.authService.getToken());
   }
 
   public showRegister() {

@@ -47,9 +47,14 @@ export class AuthService {
     this.decodedToken = this.jwtHelper.decodeToken(token);
   }
 
+  public getToken() {
+    return this.decodedToken;
+  }
+
   public getUsername() {
     return this.decodedToken.unique_name;
   }
+
   public getUserId() {
     return this.decodedToken.nameid;
   }
