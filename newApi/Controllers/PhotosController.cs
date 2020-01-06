@@ -16,6 +16,7 @@ namespace newApi.Controllers
 {
   [Authorize]
   [Route("api/users/{userId}/photos")]
+  [ApiController]
   public class PhotosController : ControllerBase
   {
     private readonly IDatingRepository _repo;
