@@ -11,6 +11,7 @@ import { ErrorInterceptorProvider } from './helpers';
 import { MemberDetailResolver, MemberListResolver, MemberEditResolver } from './resolver';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { PreventUnsavedChanges } from './guards';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -57,6 +58,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     TabsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     NgxGalleryModule,
+    FileUploadModule,
     JwtModule.forRoot({
       config: {
         tokenGetter,
