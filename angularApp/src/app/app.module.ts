@@ -20,6 +20,7 @@ import { ListsComponent } from './components/lists/lists.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { MemberListComponent, MemberCardComponent, MemberDetailComponent, MemberEditComponent } from './components/members';
 import { PhotoEditorComponent } from './components/members/photo-editor/photo-editor.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -44,7 +45,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
