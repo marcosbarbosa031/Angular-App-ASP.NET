@@ -1,0 +1,12 @@
+.overflow-table {
+  max-height: 120px;
+  overflow: auto;
+}
+
+.nv-file-over {
+  border: dotted red;
+}
+
+input[type=file] {
+  color: transparent
+}
