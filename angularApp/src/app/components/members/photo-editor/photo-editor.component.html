@@ -2,7 +2,7 @@
   <div *ngFor="let photo of photos" class="col-sm-2">
     <img src="{{photo.url}}" alt="" class="img-thumbnail p-1">
     <div class="text-center mt-2">
-      <button type="button" class="btn btn-sm mr-2">Main</button>
+      <button type="button" class="btn btn-sm mr-2" (click)="setMainPhoto(photo)">Main</button>
       <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
     </div>
   </div>
