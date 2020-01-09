@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -18,8 +19,10 @@ namespace newApi.Controllers
   {
     private readonly IAuthRepository _repo;
     private readonly IConfiguration _config;
-    public AuthController(IAuthRepository repo, IConfiguration config)
+    private readonly IMapper _mapper;
+    public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
     {
+      _mapper = mapper;
       _repo = repo;
       _config = config;
     }
@@ -38,7 +41,7 @@ namespace newApi.Controllers
 
       var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
-      return StatusCode(201); 
+      return StatusCode(201);
     }
 
     [HttpPost("login")]
@@ -48,7 +51,7 @@ namespace newApi.Controllers
 
       if (userFromRepo == null) return Unauthorized();
 
-      var claims = new []
+      var claims = new[]
       {
         new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
         new Claim(ClaimTypes.Name, userFromRepo.Username)
@@ -70,12 +73,16 @@ namespace newApi.Controllers
 
       // Creating a Token Handler
       var tokenHandler = new JwtSecurityTokenHandler();
-      
+
       // Generating token with token descriptions
       var token = tokenHandler.CreateToken(tokenDescriptor);
 
-      return Ok(new {
-        token = tokenHandler.WriteToken(token)
+      var user = _mapper.Map<UserForListDto>(userFromRepo);
+
+      return Ok(new
+      {
+        token = tokenHandler.WriteToken(token),
+        user
       });
     }
   }
