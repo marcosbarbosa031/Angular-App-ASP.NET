@@ -9,7 +9,6 @@ import { UserService, AuthService, AlertifyService } from 'src/app/services';
 })
 export class PhotoEditorComponent implements OnInit {
   @Input() photos: Photo[];
-  @Output() updateUserMainPhoto = new EventEmitter<string>();
 
   constructor(
     private userService: UserService,
