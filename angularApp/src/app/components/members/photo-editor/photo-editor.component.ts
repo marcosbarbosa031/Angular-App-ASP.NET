@@ -22,12 +22,25 @@ export class PhotoEditorComponent implements OnInit {
 
   public setMainPhoto(photo: Photo) {
     this.userService.setMainPhoto(this.authService.getUserId(), photo.id)
-      .subscribe(next => {
-        this.photos.filter(p => p.isMain === true)[0].isMain = false;
-        photo.isMain = true;
-        this.updateUserMainPhoto.emit(photo.url);
+      .subscribe(() => {
+        this.setNewMainPhoto(photo);
+        this.updateCurrentUser();
       }, error => {
         this.alertify.error(error);
+      });
+    }
+
+    private setNewMainPhoto(photo) {
+      this.photos.filter(p => p.isMain === true)[0].isMain = false;
+      photo.isMain = true;
+      this.updateUserMainPhoto.emit(photo.url);
+  }
+
+  private updateCurrentUser() {
+    this.userService.getUser(this.authService.getUserId())
+      .subscribe(u => {
+        this.authService.setCurrentUser(u);
+        localStorage.setItem('user', JSON.stringify(u));
       });
   }
 }
