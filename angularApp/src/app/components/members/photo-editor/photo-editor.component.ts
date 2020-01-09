@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Photo } from 'src/app/models/photo.model';
 import { UserService, AuthService, AlertifyService } from 'src/app/services';
-import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-photo-editor',
@@ -10,7 +9,7 @@ import { User } from 'src/app/models/user.model';
 })
 export class PhotoEditorComponent implements OnInit {
   @Input() photos: Photo[];
-  @Input() user: User;
+  @Output() updateUserMainPhoto = new EventEmitter<string>();
 
   constructor(
     private userService: UserService,
@@ -24,7 +23,9 @@ export class PhotoEditorComponent implements OnInit {
   public setMainPhoto(photo: Photo) {
     this.userService.setMainPhoto(this.authService.getUserId(), photo.id)
       .subscribe(next => {
-        this.user.photoUrl = photo.url;
+        this.photos.filter(p => p.isMain === true)[0].isMain = false;
+        photo.isMain = true;
+        this.updateUserMainPhoto.emit(photo.url);
       }, error => {
         this.alertify.error(error);
       });
