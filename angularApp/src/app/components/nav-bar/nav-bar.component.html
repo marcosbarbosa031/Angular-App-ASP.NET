@@ -16,7 +16,7 @@
   
     <div dropdown *ngIf="loggedIn()" class="dropdown">
       <span class="mr-1">
-        <img class="rounded-circle border border-white" src="{{authService.getCurrentUser().photoUrl}}" alt="{{authService.getCurrentUser().knownAs}}" width="50" height="50">
+        <img class="rounded-circle border border-white" src="{{photoUrl | async}}" alt="{{authService.getCurrentUser().knownAs}}" width="50" height="50">
       </span>
       <a dropdownToggle class="btn dropdown-toggle text-light">
         Wellcome {{getUsername() | titlecase}}!
