@@ -12,7 +12,7 @@ export class NavBarComponent implements OnInit {
   public model: any = {};
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private alertify: AlertifyService,
     private router: Router
   ) { }
@@ -23,7 +23,6 @@ export class NavBarComponent implements OnInit {
   public login() {
     this.authService.login(this.model).subscribe( () => {
       this.alertify.success('Successfully logged in!');
-
     }, error => {
       this.alertify.error(error);
     }, () => {
@@ -33,6 +32,8 @@ export class NavBarComponent implements OnInit {
 
   public logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.authService.loggOut();
     this.alertify.message('Logged out!');
     this.router.navigate(['']);
   }
