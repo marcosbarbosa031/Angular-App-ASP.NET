@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { AlertifyService, UserService, AuthService } from 'src/app/services';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-member-edit',
@@ -11,6 +12,7 @@ import { NgForm } from '@angular/forms';
 })
 export class MemberEditComponent implements OnInit {
   public user: User;
+  public photoUrl: Observable<string>;
   @ViewChild('editForm', {static: true}) editForm: NgForm;
   @HostListener('window:beforeunload', ['$event'])
   unloadNotifications($event: any) {
@@ -46,6 +48,7 @@ export class MemberEditComponent implements OnInit {
 
   private loadUser() {
     this.user = this.route.snapshot.data.user;
+    this.photoUrl = this.authService.getCurrentPhotoUrl();
   }
 
 }
