@@ -40,6 +40,10 @@ export class MemberEditComponent implements OnInit {
       });
   }
 
+  public updateMainPhoto(photoUrl) {
+    this.user.photoUrl = photoUrl;
+  }
+
   private loadUser() {
     this.user = this.route.snapshot.data.user;
   }
