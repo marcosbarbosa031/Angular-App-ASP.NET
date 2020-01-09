@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services';
 import { AlertifyService } from 'src/app/services';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
   public model: any = {};
+  public photoUrl: Observable<string>;
 
   constructor(
     public authService: AuthService,
@@ -18,6 +20,7 @@ export class NavBarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getUserPhoto();
   }
 
   public login() {
@@ -44,6 +47,10 @@ export class NavBarComponent implements OnInit {
 
   public getUsername() {
     return this.authService.getUsername();
+  }
+
+  public getUserPhoto() {
+    this.photoUrl = this.authService.getCurrentPhotoUrl();
   }
 
 }
