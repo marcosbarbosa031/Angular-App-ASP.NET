@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -117,6 +118,40 @@ namespace newApi.Controllers
       if(await _repo.SaveAll()) return NoContent();
 
       return BadRequest("Could not set photo to main");
+    }
+
+    [HttpPost("{photoId}/delete")]
+    public async Task<IActionResult> DeletePhoto(int userId, int photoId)
+    {
+      if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) return Unauthorized();
+
+      var userFromRepo = await _repo.GetUser(userId);
+
+      if (!userFromRepo.Photos.Any(p => p.Id == photoId)) return Unauthorized();
+
+      var photoFromRepo = await _repo.GetPhoto(photoId);
+
+      if (photoFromRepo.IsMain) return BadRequest("You can't delete your main photo. You have to select another main photo before.");
+
+      if (photoFromRepo.PublicId != null) 
+      {
+        var deleteParams = new DeletionParams(photoFromRepo.PublicId);
+
+        var result = _cloudinary.Destroy(deleteParams);
+
+        if (result.Result == "ok") {
+          userFromRepo.Photos.Remove(photoFromRepo);
+        }
+      }
+      else
+      {
+        userFromRepo.Photos.Remove(photoFromRepo);
+      }
+
+      if (await _repo.SaveAll()) return Ok();
+
+      return BadRequest("Failed to delete photo.");
+
     }
   }
 }
