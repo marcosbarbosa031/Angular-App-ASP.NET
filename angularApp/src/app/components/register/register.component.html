@@ -1,14 +1,46 @@
 <div>
-  <form #registerForm="ngForm" (ngSubmit)="register()">
+  <form [formGroup]="registrationForm" (ngSubmit)="register()">
     <h2 class="text-center text-primary">Sign Up</h2>
   
     <hr>
     <div class="form-group">
-      <input type="text" class="form-control" required name="username" placeholder="Username" [(ngModel)]="model.username">
+      <input
+        type="text"
+        class="form-control"
+        [ngClass]="{'is-invalid': f.username.errors && f.username.touched}"
+        formControlName="username"
+        placeholder="Username" >
+      <div class="invalid-feedback" *ngIf="f.username.errors">Choose a username</div>
     </div>
   
     <div class="form-group">
-      <input type="password" class="form-control" required name="password" placeholder="Password" [(ngModel)]="model.password">
+      <input
+      type="password"
+      class="form-control"
+      [ngClass]="{'is-invalid': f.password.errors && f.password.touched}"
+      formControlName="password"
+      placeholder="Password">
+      <div
+        class="invalid-feedback"
+        *ngIf="f.password.hasError('required')
+          && f.password.touched">Password is required</div>
+      <div
+        class="invalid-feedback"
+        *ngIf="f.password.hasError('minlength')
+          && f.password.touched">Password must be at least 8 characters long</div>
+    </div>
+    
+    <div class="form-group">
+      <input
+      type="password"
+      class="form-control"
+      [ngClass]="{'is-invalid': f.confirmPassword.errors && f.confirmPassword.touched
+        || f.confirmPassword.touched && f.password.value !== f.confirmPassword.value}"
+      formControlName="confirmPassword"
+      placeholder="Confirm Password">
+      <div
+        class="invalid-feedback"
+        *ngIf="f.confirmPassword.touched && (f.password.value !== f.confirmPassword.value || f.confirmPassword.value == '')">Passwords must match</div>
     </div>
   
     <div class="form-group text-center">
@@ -16,4 +48,12 @@
       <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
     </div>
   </form>
+
+  <div>
+    <p>Form Value: {{registrationForm.value | json}}</p>
+    <p>Form Status: {{registrationForm.status | json}}</p>
+    <p>password Status: {{f.password.errors | json}}</p>
+    <p>confirmPassword Status: {{f.confirmPassword.errors | json}}</p>
+    
+  </div>
 </div>
