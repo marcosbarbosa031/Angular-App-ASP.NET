@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services';
 import { AlertifyService } from 'src/app/services';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -11,16 +11,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   @Output() showRegister = new EventEmitter();
   public model: any = {};
-  public registrationForm: FormGroup;
-  public get f() { return this.registrationForm.controls; }
+  public registerForm: FormGroup;
+  public get f() { return this.registerForm.controls; }
 
   constructor(
     private authService: AuthService,
-    private alertify: AlertifyService
+    private alertify: AlertifyService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
-    this.createForm();
+    this.createRegisterForm();
     console.log('form: ', this.f.password.value);
   }
 
@@ -31,20 +32,19 @@ export class RegisterComponent implements OnInit {
     // }, error => {
     //   this.alertify.error(error);
     // });
-    console.log('registerForm: ', this.registrationForm.value);
+    console.log('registerForm: ', this.registerForm.value);
   }
 
   public cancel() {
     this.showRegister.emit(false);
   }
 
-
-  private createForm() {
-    this.registrationForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)] ),
-      confirmPassword: new FormControl('', Validators.required)
-    }, this.passwordMatchValidator);
+  private createRegisterForm() {
+    this.registerForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', Validators.required]
+    }, {validator: this.passwordMatchValidator});
   }
 
   public passwordMatchValidator(g: FormGroup) {

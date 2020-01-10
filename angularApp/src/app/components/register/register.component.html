@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="registrationForm" (ngSubmit)="register()">
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
     <h2 class="text-center text-primary">Sign Up</h2>
   
     <hr>
@@ -50,8 +50,8 @@
   </form>
 
   <div>
-    <p>Form Value: {{registrationForm.value | json}}</p>
-    <p>Form Status: {{registrationForm.status | json}}</p>
+    <p>Form Value: {{registerForm.value | json}}</p>
+    <p>Form Status: {{registerForm.status | json}}</p>
     <p>password Status: {{f.password.errors | json}}</p>
     <p>confirmPassword Status: {{f.confirmPassword.errors | json}}</p>
     
